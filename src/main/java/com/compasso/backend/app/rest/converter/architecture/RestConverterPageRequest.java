@@ -1,7 +1,7 @@
 package com.compasso.backend.app.rest.converter.architecture;
 
 import com.compasso.backend.app.exception.ArchitectureLogicException;
-import com.compasso.backend.app.pattern.rest.AbstractRestDTOConverter;
+import com.compasso.backend.app.rest.pattern.AbstractRestDTOConverter;
 import com.compasso.backend.app.rest.dto.architecture.PageRequestDTO;
 import com.compasso.backend.app.rest.dto.architecture.SortDTO;
 import com.compasso.backend.app.util.EnsuresThat;

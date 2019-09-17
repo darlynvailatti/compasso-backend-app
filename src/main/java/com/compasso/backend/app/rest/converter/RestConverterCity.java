@@ -2,7 +2,7 @@ package com.compasso.backend.app.rest.converter;
 
 import com.compasso.backend.app.domain.entity.CityEntity;
 import com.compasso.backend.app.exception.ArchitectureLogicException;
-import com.compasso.backend.app.pattern.rest.AbstractRestDTOConverter;
+import com.compasso.backend.app.rest.pattern.AbstractRestDTOConverter;
 import com.compasso.backend.app.rest.dto.CityDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

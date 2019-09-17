@@ -10,6 +10,8 @@ import com.compasso.backend.app.rest.dto.architecture.PageRequestDTO;
 import com.compasso.backend.app.rest.resource.ICityResource;
 import com.compasso.backend.app.service.ICityService;
 import com.compasso.backend.app.util.EnsuresThat;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Api(value = "Cities")
 @RestController
 @RequestMapping("/cities")
 public class CityResourceImpl implements ICityResource {
@@ -32,6 +35,7 @@ public class CityResourceImpl implements ICityResource {
     @Autowired
     private ICityService cityService;
 
+    @ApiOperation(value = "Create new City")
     @Override
     @PutMapping
     public @ResponseBody CityDTO put(@RequestBody NewCityDTO newCityDTO) throws Exception {
@@ -43,6 +47,7 @@ public class CityResourceImpl implements ICityResource {
         return restConverterCity.convertToDTO(cityEntityRegistered);
     }
 
+    @ApiOperation(value = "All cities with pagination")
     @Override
     @PostMapping("all/paginated")
     public @ResponseBody PageDTO<CityDTO> listAll(@RequestBody PageRequestDTO pageRequestDTO) throws Exception {
@@ -52,6 +57,7 @@ public class CityResourceImpl implements ICityResource {
         return new PageDTO<>(pageAllCities.getTotalElements(), cityDTOs);
     }
 
+    @ApiOperation(value = "Find city by name with pagination")
     @Override
     @PostMapping("by/name/paginated")
     public @ResponseBody PageDTO<CityDTO> findByName(@RequestParam String name, @RequestBody PageRequestDTO pageRequestDTO) throws Exception {
@@ -65,8 +71,9 @@ public class CityResourceImpl implements ICityResource {
         return new PageDTO<>(pageCitysByName.getTotalElements(), citysDTO);
     }
 
+    @ApiOperation(value = "Find city by ID of Federative Unit with pagination")
     @Override
-    @PostMapping("by/id/federativeUnit/paginated")
+    @PostMapping("by/federativeUnit/id/paginated")
     public @ResponseBody PageDTO<CityDTO> findByIdFederativeUnit(@RequestParam Long id, @RequestBody PageRequestDTO pageRequestDTO) throws Exception {
         PageRequest pageRequest = restConverterPageRequest.convertToEntity(pageRequestDTO);
         Page<CityEntity> pageCitysByIdFederativeUnit = cityService.findByIdFederativeUnit(id, pageRequest);
@@ -75,8 +82,9 @@ public class CityResourceImpl implements ICityResource {
         return new PageDTO<>(pageCitysByIdFederativeUnit.getTotalElements(), cityDTOS);
     }
 
+    @ApiOperation(value = "Find city by Initials of Federative Unit with pagination")
     @Override
-    @PostMapping("by/initials/federativeUnit/paginated")
+    @PostMapping("by/federativeUnit/initials/paginated")
     public @ResponseBody PageDTO<CityDTO> findByIdFederativeUnit(@RequestParam String initialsFederativeUnit, @RequestBody PageRequestDTO pageRequestDTO) throws Exception {
         PageRequest pageRequest = restConverterPageRequest.convertToEntity(pageRequestDTO);
         Page<CityEntity> pageCitysByIdFederativeUnit = cityService.findByFederativeUnitInitials(initialsFederativeUnit, pageRequest);

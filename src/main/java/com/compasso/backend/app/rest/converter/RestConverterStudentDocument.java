@@ -2,7 +2,7 @@ package com.compasso.backend.app.rest.converter;
 
 import com.compasso.backend.app.domain.entity.StudentDocumentEntity;
 import com.compasso.backend.app.exception.ArchitectureLogicException;
-import com.compasso.backend.app.pattern.rest.AbstractRestDTOConverter;
+import com.compasso.backend.app.rest.pattern.AbstractRestDTOConverter;
 import com.compasso.backend.app.rest.dto.StudentDocumentDTO;
 
 import javax.annotation.ManagedBean;

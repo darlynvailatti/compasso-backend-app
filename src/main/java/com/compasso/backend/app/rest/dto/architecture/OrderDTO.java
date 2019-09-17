@@ -1,7 +1,7 @@
 package com.compasso.backend.app.rest.dto.architecture;
 
 
-import com.compasso.backend.app.pattern.rest.AbstractRestDTO;
+import com.compasso.backend.app.rest.pattern.AbstractRestDTO;
 
 public class OrderDTO extends AbstractRestDTO {
 

@@ -2,8 +2,6 @@ package com.compasso.backend.app.service.impl;
 
 import com.compasso.backend.app.domain.entity.StudentEntity;
 import com.compasso.backend.app.exception.BusinessLogicException;
-import com.compasso.backend.app.processor.ProcessorAddDocumentToStudent;
-import com.compasso.backend.app.processor.dto.AddDocumentToStudent;
 import com.compasso.backend.app.repository.IStudentRepository;
 import com.compasso.backend.app.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +18,6 @@ public class StudentServiceImpl implements IStudentService {
 
     @Autowired
     private IStudentRepository studentRepository;
-
-    @Autowired
-    private ProcessorAddDocumentToStudent processorAddDocumentoToStudent;
 
     @Override
     public StudentEntity find(Long id) throws BusinessLogicException {
@@ -56,11 +51,5 @@ public class StudentServiceImpl implements IStudentService {
     public StudentEntity confirm(StudentEntity entity) throws BusinessLogicException {
         return studentRepository.save(entity);
     }
-
-    @Override
-    public AddDocumentToStudent.Return addDocumentsToStudent(AddDocumentToStudent add) throws BusinessLogicException {
-        return processorAddDocumentoToStudent.execute(add);
-    }
-
 
 }

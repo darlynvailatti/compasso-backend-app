@@ -1,6 +1,6 @@
 package com.compasso.backend.app.rest.dto.architecture;
 
-import com.compasso.backend.app.pattern.rest.AbstractRestDTO;
+import com.compasso.backend.app.rest.pattern.AbstractRestDTO;
 
 import java.util.List;
 

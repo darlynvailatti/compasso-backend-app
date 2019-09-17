@@ -1,6 +1,6 @@
 package com.compasso.backend.app.rest.dto;
 
-import com.compasso.backend.app.pattern.rest.AbstractRestDTO;
+import com.compasso.backend.app.rest.pattern.AbstractRestDTO;
 
 public class CityDTO extends AbstractRestDTO {
 

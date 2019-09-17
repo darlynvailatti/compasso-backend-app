@@ -14,8 +14,6 @@ public interface IStudentResource {
 
     List<StudentDTO> listAll() throws Exception;
 
-    List<StudentDocumentDTO> addDocumentsToStudent(Long idStudent, List<StudentDocumentDTO> documents) throws Exception;
-
     PageDTO<StudentDTO> listAllWithPagination(PageRequestDTO pageRequestDTO) throws Exception;
 
     public PageDTO<StudentDTO> listAllByNameContainingWithPagination(String name, PageRequestDTO pageRequestDTO) throws Exception;

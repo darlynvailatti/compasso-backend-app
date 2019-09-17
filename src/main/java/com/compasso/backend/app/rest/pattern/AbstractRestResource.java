@@ -1,4 +1,4 @@
-package com.compasso.backend.app.pattern.rest;
+package com.compasso.backend.app.rest.pattern;
 
 import com.compasso.backend.app.CompassoContext;
 import com.compasso.backend.app.security.TokenAuthenticationService;

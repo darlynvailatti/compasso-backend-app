@@ -12,8 +12,8 @@ import java.time.Period;
 public class ClientEntity extends AbstractEntity {
 
     @Id
-    @SequenceGenerator(name = "city_seq_gen", sequenceName = "city_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="city_seq_gen")
+    @SequenceGenerator(name = "client_seq_gen", sequenceName = "client_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="client_seq_gen")
     private Long id;
 
     private String fullName;

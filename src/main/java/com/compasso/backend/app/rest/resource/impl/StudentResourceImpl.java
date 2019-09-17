@@ -3,8 +3,7 @@ package com.compasso.backend.app.rest.resource.impl;
 import com.compasso.backend.app.domain.entity.StudentDocumentEntity;
 import com.compasso.backend.app.domain.entity.StudentEntity;
 import com.compasso.backend.app.exception.BusinessLogicException;
-import com.compasso.backend.app.pattern.rest.AbstractRestResource;
-import com.compasso.backend.app.processor.dto.AddDocumentToStudent;
+import com.compasso.backend.app.rest.pattern.AbstractRestResource;
 import com.compasso.backend.app.rest.converter.architecture.RestConverterPageRequest;
 import com.compasso.backend.app.rest.converter.RestConverterStudent;
 import com.compasso.backend.app.rest.converter.RestConverterStudentDocument;
@@ -109,33 +108,6 @@ public class StudentResourceImpl extends AbstractRestResource
     	StudentEntity student = studentService.find(idStudent);
     	StudentDTO dto = restConverterStudent.convertToDTO(student);
     	return new ResponseEntity<>(dto, HttpStatus.FOUND);
-    }
-    
-    @Override
-    @PostMapping("{idStudent}/documents")
-    public List<StudentDocumentDTO> addDocumentsToStudent(@PathVariable("idStudent") Long idStudent,
-    		@RequestBody List<StudentDocumentDTO> documents) throws Exception {
-    	
-    	log.info("Student ID: {}", idStudent);
-    	List<StudentDocumentEntity> studentDocumentEntities = new ArrayList<>();
-    	for (StudentDocumentDTO studentDocumentDTO : documents) {
-			StudentDocumentEntity studentDocument = restConverterStudentDocument.convertToEntity(studentDocumentDTO);
-			studentDocumentEntities.add(studentDocument);
-		}
-    	
-    	StudentEntity studentEntity = studentService.find(idStudent);
-    	log.info("Student Founded: {}", studentEntity);
-    	
-        AddDocumentToStudent add = new AddDocumentToStudent(studentEntity, studentDocumentEntities);
-        List<StudentDocumentEntity> savedDocuments = studentService.addDocumentsToStudent(add).getDocuments();
-        
-        List<StudentDocumentDTO> savedDocumentsDTO = new ArrayList<>();
-        
-        for (StudentDocumentEntity savedDocument : savedDocuments) {
-        	StudentDocumentDTO dto = restConverterStudentDocument.convertToDTO(savedDocument);
-			savedDocumentsDTO.add(dto);
-		}
-        return savedDocumentsDTO;
     }
 
 }

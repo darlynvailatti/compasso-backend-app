@@ -15,9 +15,9 @@ public abstract class AbstractProcessor<Input extends AbstractProcessorDTO, Outp
     public Output execute(Input in) throws BusinessLogicException {
         try{
             saveInput(in);
+            validateInput();
             executionImplementation();
-            executionReturn();
-            return output;
+            return executionReturn();
         }catch(Exception e){
             throwNewBusinessLogicException(e);
             return null;
@@ -33,9 +33,11 @@ public abstract class AbstractProcessor<Input extends AbstractProcessorDTO, Outp
         throw new BusinessLogicException(formatedMessage);
     }
 
-    protected abstract void executionImplementation() throws BusinessLogicException;
+    protected abstract void executionImplementation() throws Exception;
 
-    protected abstract void executionReturn();
+    protected abstract Output executionReturn() throws Exception;
+
+    protected abstract void validateInput() throws Exception;
 
     protected abstract String getName();
 }

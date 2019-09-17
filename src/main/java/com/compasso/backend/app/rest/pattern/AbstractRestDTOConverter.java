@@ -1,4 +1,4 @@
-package com.compasso.backend.app.pattern.rest;
+package com.compasso.backend.app.rest.pattern;
 
 import com.compasso.backend.app.exception.ArchitectureLogicException;
 import com.compasso.backend.app.util.ExpectThat;
@@ -29,5 +29,10 @@ public abstract class AbstractRestDTOConverter<DTO extends AbstractRestDTO, Enti
 		}
 		return Collections.emptyList();
 	}
+
+	public Collection<DTO> convertFromCollection(Collection<Entity> entities) throws ArchitectureLogicException {
+		throw new ArchitectureLogicException("Not implemented");
+	}
+
 	
 }
