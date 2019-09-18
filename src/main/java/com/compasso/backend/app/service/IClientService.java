@@ -16,4 +16,8 @@ public interface IClientService extends IService {
     Page<ClientEntity> findAllPaginated(Pageable pageRequest) throws BusinessLogicException;
 
     ChangeNameOfClientDTO.Result changeName(ChangeNameOfClientDTO edit) throws BusinessLogicException;
+
+    ClientEntity newClient(ClientEntity clientEntity) throws BusinessLogicException;
+
+    ClientEntity removeClient(Long idClient) throws BusinessLogicException;
 }

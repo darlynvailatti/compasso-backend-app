@@ -32,6 +32,23 @@ public class ClientResourceImpl implements IClientResource {
     @Autowired
     private RestConverterPageRequest restConverterPageRequest;
 
+    @PutMapping
+    @Override
+    public @ResponseBody ClientDTO put(@RequestBody ClientDTO clientDTO) throws Exception {
+        EnsuresThat.isNotNull(clientDTO, "ClientDTO cannot be NULL");
+        ClientEntity clientEntity = restConverterClient.convertToEntity(clientDTO);
+        ClientEntity newClient = clientService.newClient(clientEntity);
+        return restConverterClient.convertToDTO(newClient);
+    }
+
+    @DeleteMapping("{idClient}")
+    @Override
+    public ClientDTO delete(@PathVariable("idClient") Long idClient) throws Exception {
+        EnsuresThat.isNotNull(idClient, "ID Client cannot be NULL");
+        ClientEntity clientEntityRemoved = clientService.removeClient(idClient);
+        return restConverterClient.convertToDTO(clientEntityRemoved);
+    }
+
     @GetMapping("{idClient}")
     @Override
     public @ResponseBody ClientDTO findById(@PathVariable("idClient") Long id) throws Exception {

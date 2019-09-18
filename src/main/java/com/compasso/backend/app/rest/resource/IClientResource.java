@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 public interface IClientResource {
 
+    ClientDTO put(ClientDTO clientDTO) throws Exception;
+
+    ClientDTO delete(Long idClient) throws Exception;
+
     ClientDTO findById(Long id) throws Exception;
 
     PageDTO<ClientDTO> findAllPaginated(PageRequestDTO pageRequstDTO) throws Exception;
 
-    @PostMapping("{idClient}/update/name")
-    @ResponseBody
-    ClientDTO updateName(@PathVariable("idClient") Long idClient, @RequestBody String newName) throws Exception;
+    ClientDTO updateName(Long idClient, String newName) throws Exception;
 }
