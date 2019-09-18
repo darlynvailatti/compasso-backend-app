@@ -22,7 +22,7 @@ Value: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU2OTMyNDU0NCwid
 ````
 
 ## Arquitetura
-Utilizei uma arquitetura básica que inclui uma divisão em camadas:
+Utilizei uma arquitetura básica que inclui uma divisão em camadas, além de um processo simples de autenticação utilizando o próprio Spring Secutiry.
 - **domain**: artefatos relacionados ao negócio. Entidades, fábricas, comuns.
 - **repository**: artefatos relacionadas a persistência e banco de dados.
 - **processor**: artefatos intermediárias para processos lógicos do negócio, são chamadas pela camada de serviço.
