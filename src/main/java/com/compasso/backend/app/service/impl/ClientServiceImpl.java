@@ -43,7 +43,7 @@ public class ClientServiceImpl implements IClientService {
     @Override
     public Page<ClientEntity> findByName(String name, Pageable pageRequest) throws BusinessLogicException {
         try {
-            boolean nameIsNull = ExpectThat.isNotNullAndNotEmpty(name);
+            boolean nameIsNull = ExpectThat.isNullAndEmpty(name);
             EnsuresThat.isFalse(nameIsNull, "Name cannot be NULL");
             return clientRepository.findByFullNameContainingIgnoreCase(name, pageRequest);
         } catch (Exception e){

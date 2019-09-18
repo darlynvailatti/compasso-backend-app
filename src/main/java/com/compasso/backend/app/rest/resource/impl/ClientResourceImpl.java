@@ -57,6 +57,17 @@ public class ClientResourceImpl implements IClientResource {
         return restConverterClient.convertToDTO(findedClient);
     }
 
+    @PostMapping("by/name/paginated")
+    @Override
+    public @ResponseBody PageDTO<ClientDTO> findByName(@RequestParam String name, @RequestBody PageRequestDTO pageRequestDTO) throws Exception {
+        PageRequest pageRequest = restConverterPageRequest.convertToEntity(pageRequestDTO);
+        Page<ClientEntity> pageFindedClients = clientService.findByName(name, pageRequest);
+        long totalFindedClients = pageFindedClients.getTotalElements();
+        List<ClientEntity> findedClients = pageFindedClients.getContent();
+        Collection<ClientDTO> clientDTOS = restConverterClient.convertFromCollection(findedClients);
+        return new PageDTO<>(totalFindedClients, clientDTOS);
+    }
+
     @PostMapping("all/paginated")
     @Override
     public @ResponseBody PageDTO<ClientDTO> findAllPaginated(@RequestBody PageRequestDTO pageRequstDTO) throws Exception {

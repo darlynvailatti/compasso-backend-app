@@ -3,7 +3,6 @@ package com.compasso.backend.app.rest.resource;
 import com.compasso.backend.app.rest.dto.ClientDTO;
 import com.compasso.backend.app.rest.dto.architecture.PageDTO;
 import com.compasso.backend.app.rest.dto.architecture.PageRequestDTO;
-import org.springframework.web.bind.annotation.*;
 
 public interface IClientResource {
 
@@ -12,6 +11,8 @@ public interface IClientResource {
     ClientDTO delete(Long idClient) throws Exception;
 
     ClientDTO findById(Long id) throws Exception;
+
+    PageDTO<ClientDTO> findByName(String name, PageRequestDTO pageRequestDTO) throws Exception;
 
     PageDTO<ClientDTO> findAllPaginated(PageRequestDTO pageRequstDTO) throws Exception;
 
