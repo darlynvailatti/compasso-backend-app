@@ -4,7 +4,7 @@
 Projeto desenvolvido com Spring Boot 2.1.8. Implementação em idioma Inglês.
 
 ## Documentation
-Para documentação utilizei o Swagger, disponível através do path `/compasso/api/swagger-ui.html``
+Para documentação utilizei o Swagger, disponível através do path ``/compasso/api/swagger-ui.html``
 
 ## Authentication
 Neste projeto utilizou-se JWT como token de autenticação. O token poderá ser obtido através do endpoint POST ``/compasso/api/authentication`` com o seguinte conteúdo:
