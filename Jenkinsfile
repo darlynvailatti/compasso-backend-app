@@ -1,23 +1,21 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
-
+    agent any
     stages {
         stage('Build compile'){
             steps{
-                echo 'Bulding and compile'
-                sh 'mvn compile'
+                withMaven(){
+                    echo 'Bulding and compile'
+                    sh 'mvn compile'
+                }
             }
         }
 
         stage('Testing'){
             steps{
-                echo 'Testin'
-                sh 'mvn test'
+                withMaven(){
+                    echo 'Testin'
+                    sh 'mvn test'
+                }
             }
         }
     }
