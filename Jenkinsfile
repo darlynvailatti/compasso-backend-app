@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build compile'){
             steps{
-                withMaven(){
+                withMaven(maven: "maven"){
                     echo 'Bulding and compile'
                     sh 'mvn compile'
                 }
@@ -12,7 +12,7 @@ pipeline {
 
         stage('Testing'){
             steps{
-                withMaven(){
+                 withMaven(maven: "maven"){
                     echo 'Testin'
                     sh 'mvn test'
                 }
